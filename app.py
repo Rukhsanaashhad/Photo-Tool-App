@@ -55,3 +55,5 @@ if uploaded_image is not None:
 
 else:  
     st.write("Please upload an Image")  
+
+st.write("©️ Developed by [Muhammad Ashhad Khan](https://github.com/Rukhsanaashhad)")
