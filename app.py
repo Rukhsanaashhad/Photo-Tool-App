@@ -3,7 +3,10 @@ from PIL import Image, ImageOps, ImageDraw
 import io  
 from rembg import remove  
 
-st.title("Ashhad's Photo Tool")  
+st.set_page_config(page_title="Photo App",
+                   page_icon="🖼️")
+
+st.title("Ashhad's Photo Tool 📸")  
 
 uploaded_image = st.file_uploader("Upload an Image", type=["jpg", "jpeg", "png"])  
 
