@@ -52,9 +52,4 @@ else:
 st.write("©️ Developed by [Muhammad Ashhad Khan](https://github.com/Rukhsanaashhad)")  
 
   
-try:  
-    with open("requirements.txt", "r") as a:    
-        content = a.read()  
-        st.write("Requirements:\n", content)  
-except FileNotFoundError:  
-    st.error("😊")  
+  
