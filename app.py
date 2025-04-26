@@ -41,11 +41,11 @@ if uploaded_image is not None:
             st.session_state.img_to_display = cropped_img  
             st.image(cropped_img, caption="Cropped Image", use_container_width=True)  
 
-        if st.button("Download Image"):  
+        if st.button("Click Here"):  
             buf = io.BytesIO()  
             st.session_state.img_to_display.save(buf, format="PNG")  
             byte_im = buf.getvalue()  
-            st.download_button(label="Click Here", data=byte_im, file_name="blue_background_image.png", mime="image/png")  
+            st.download_button(label="Download Image", data=byte_im, file_name="blue_background_image.png", mime="image/png")  
 else:  
     st.write("Please upload an Image")  
 
