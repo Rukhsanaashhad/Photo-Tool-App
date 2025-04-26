@@ -1,33 +1,27 @@
 import streamlit as st  
-from PIL import Image, ImageOps, ImageDraw  
+from PIL import Image, ImageOps  
 import io  
 from rembg import remove  
 
-st.set_page_config(page_title="Photo App",
-                   page_icon="🖼️")
-
+st.set_page_config(page_title="Photo App", page_icon="🖼️")  
 st.title("Ashhad's Photo Tool 📸")  
 
 uploaded_image = st.file_uploader("Upload an Image", type=["jpg", "jpeg", "png"])  
 
 if 'img_to_display' not in st.session_state:  
     st.session_state.img_to_display = None  
- 
+
 if uploaded_image is not None:  
     img = Image.open(uploaded_image).convert("RGBA")  
     st.image(img, caption="Original Image", use_container_width=True)  
 
     if st.button("Apply Blue Background"):  
-       
         img_no_bg = remove(uploaded_image.getvalue())  
         img_no_bg = Image.open(io.BytesIO(img_no_bg)).convert("RGBA")  
 
-       
         blue_bg = Image.new("RGBA", img_no_bg.size, (0, 102, 204, 255))  
-
         img_alpha = img_no_bg.split()[-1]  
 
-        
         combined_image = Image.new("RGBA", img_no_bg.size)  
         combined_image.paste(blue_bg, (0, 0))  
         combined_image.paste(img_no_bg, (0, 0), img_alpha)  
@@ -52,13 +46,15 @@ if uploaded_image is not None:
             st.session_state.img_to_display.save(buf, format="PNG")  
             byte_im = buf.getvalue()  
             st.download_button(label="Download Image", data=byte_im, file_name="blue_background_image.png", mime="image/png")  
-
 else:  
     st.write("Please upload an Image")  
 
-st.write("©️ Developed by [Muhammad Ashhad Khan](https://github.com/Rukhsanaashhad)")
+st.write("©️ Developed by [Muhammad Ashhad Khan](https://github.com/Rukhsanaashhad)")  
 
-a = open("requirement.txt", "r")  # Open the file in read mode  
-content = a.read()          
-print(content)              
-a.close()                 
+  
+try:  
+    with open("requirements.txt", "r") as a:    
+        content = a.read()  
+        st.write("Requirements:\n", content)  
+except FileNotFoundError:  
+    st.error("The requirements file was not found. Please check the file name and location.")  
