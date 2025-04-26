@@ -18,16 +18,16 @@ if uploaded_image is not None:
     st.image(img, caption="Original Image", use_container_width=True)  
 
     if st.button("Apply Blue Background"):  
-        # Remove background
+       
         img_no_bg = remove(uploaded_image.getvalue())  
         img_no_bg = Image.open(io.BytesIO(img_no_bg)).convert("RGBA")  
 
-        # Create solid blue background
+       
         blue_bg = Image.new("RGBA", img_no_bg.size, (0, 102, 204, 255))  
 
         img_alpha = img_no_bg.split()[-1]  
 
-        # Combine subject with blue background
+        
         combined_image = Image.new("RGBA", img_no_bg.size)  
         combined_image.paste(blue_bg, (0, 0))  
         combined_image.paste(img_no_bg, (0, 0), img_alpha)  
@@ -57,3 +57,8 @@ else:
     st.write("Please upload an Image")  
 
 st.write("©️ Developed by [Muhammad Ashhad Khan](https://github.com/Rukhsanaashhad)")
+
+a = open("requirement.txt", "r")  # Open the file in read mode  
+content = a.read()          
+print(content)              
+a.close()                 
