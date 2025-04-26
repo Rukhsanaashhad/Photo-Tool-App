@@ -57,4 +57,4 @@ try:
         content = a.read()  
         st.write("Requirements:\n", content)  
 except FileNotFoundError:  
-    st.error("The requirements file was not found. Please check the file name and location.")  
+    st.error("😊")  
