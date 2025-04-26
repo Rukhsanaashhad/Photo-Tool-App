@@ -44,7 +44,7 @@ if st.session_state.processed_image is not None:
     st.image(display_image, caption="Processed Image", use_container_width=True)  
 
     # Download option
-    if st.button("Download Image"):  
+    if st.button("Click Here"):  
         buf = io.BytesIO()  
         display_image.save(buf, format="PNG")  
         byte_im = buf.getvalue()  
